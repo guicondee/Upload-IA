@@ -11,13 +11,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Slider } from "./components/ui/slider";
+import { VideoInpuForm } from "./components/video-input-form";
 
 export function App() {
   return (
     <>
       <div className="flex h-screen flex-col">
         <div className="px-6 py-3 flex items-center justify-between border-b">
-          <h1 className="text-xl font-bold">upload.ai</h1>
+          <h1 className="text-xl font-bold">
+            upload.<span className="text-cyan-400">ai</span>
+          </h1>
           <div className="flex items-center gap-3">
             <span className="text-sm text-muted-foreground">
               Desenvolvido no NLW Upload.IA
@@ -53,39 +56,7 @@ export function App() {
           </div>
 
           <aside className="w-80 space-y-6">
-            <form className="space-y-6">
-              <label
-                className="border flex cursor-pointer rounded-md aspect-video border-dashed text-sm flex-col gap-2 items-center justify-center text-muted-foreground hover:bg-primary/5"
-                htmlFor="video"
-              >
-                <FileVideo className="w-4 h-4" />
-                Selecione um video
-              </label>
-              <input
-                type="file"
-                id="video"
-                accept="video/mp4"
-                className="sr-only"
-              />
-
-              <Separator />
-
-              <div className=" space-y-2">
-                <Label htmlFor="transcription_prompt">
-                  Prompt de transcrição
-                </Label>
-                <Textarea
-                  placeholder="Inclua palavras-chave mencionadas no video separadas pro vírgula ( , )"
-                  className="h-20 resize-none overflow-hidden leading-relaxed"
-                  id="transcription_prompt"
-                />
-              </div>
-
-              <Button type="submit" className="w-full">
-                Carregar video
-                <Upload className="w-4 h-4 ml-2" />
-              </Button>
-            </form>
+            <VideoInpuForm />
 
             <Separator />
 
@@ -122,7 +93,7 @@ export function App() {
               <div className="space-y-3">
                 <Label>Temperatura</Label>
 
-                <Slider min={0} max={1} step={0.1} />
+                <Slider className="cursor-pointer" min={0} max={1} step={0.1} />
 
                 <span className="block text-xs text-muted-foreground italic leading-relaxed">
                   Valores mais altos tendem adeixar o resultado mais criativo
