@@ -19,7 +19,7 @@ export function App() {
       <div className="flex h-screen flex-col">
         <div className="px-6 py-3 flex items-center justify-between border-b">
           <h1 className="text-xl font-bold">
-            upload.<span className="text-cyan-400">ai</span>
+            upload.<span className="text-cyan-400">Ai</span>
           </h1>
           <div className="flex items-center gap-3">
             <span className="text-sm text-muted-foreground">
