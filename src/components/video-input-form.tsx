@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { ChangeEvent, FormEvent, useMemo, useRef, useState } from "react";
 import { getFFmpeg } from "@/lib/ffmpeg";
 import { fetchFile } from "@ffmpeg/util";
+import { api } from "@/lib/axios";
 
 export function VideoInpuForm() {
   const [videoFile, setVideoFile] = useState<File | null>(null);
@@ -72,7 +73,15 @@ export function VideoInpuForm() {
     //converter o video em mp3
 
     const audioFile = await convertVideoToAudio(videoFile);
-    console.log(audioFile);
+
+    const data = new FormData();
+
+    data.append("file", audioFile);
+
+    console.log(data);
+
+    const response = await api.post("/videos", data);
+    console.log(response.data);
   }
 
   const previewURL = useMemo(() => {
