@@ -71,17 +71,17 @@ export function VideoInpuForm() {
     }
 
     //converter o video em mp3
-
     const audioFile = await convertVideoToAudio(videoFile);
 
     const data = new FormData();
 
     data.append("file", audioFile);
 
-    console.log(data);
-
     const response = await api.post("/videos", data);
-    console.log(response.data);
+
+    const videoID = response.data.id;
+
+    await api.post(`/videos/${videoID}/transcription`, { prompt });
   }
 
   const previewURL = useMemo(() => {
